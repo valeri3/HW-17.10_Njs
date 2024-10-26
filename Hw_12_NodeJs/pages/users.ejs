@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Список пользователей</h1>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Имя</th>
+            <th>Логин</th>
+            <% if (isAdmin) { %>
+                <th>Действия</th>
+            <% } %>
+        </tr>
+        </thead>
+        <tbody>
+        <% users.forEach(function(user) { %>
+            <tr>
+                <td><%= user.Name %></td>
+                <td><%= user.Login %></td>
+                <% if (isAdmin) { %>
+                    <td>
+                        <a href="/edit/<%= user.Id %>" class="btn btn-warning btn-sm">Изменить</a>
+                        <form action="/delete/<%= user.Id %>" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                        </form>
+                    </td>
+                <% } %>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-danger">Выйти</a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

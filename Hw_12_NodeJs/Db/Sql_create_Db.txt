@@ -1,0 +1,24 @@
+-- Создание базы данных
+CREATE DATABASE AuthorizationDB;
+GO
+
+-- Использование новой базы данных
+USE AuthorizationDB;
+GO
+
+-- Создание таблицы Users
+CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(50) NOT NULL,
+    Login NVARCHAR(50) UNIQUE NOT NULL,
+    Password NVARCHAR(255) NOT NULL
+);
+GO
+
+-- Создание таблицы Admins
+CREATE TABLE Admins (
+    Id INT PRIMARY KEY IDENTITY,
+    Login NVARCHAR(50) UNIQUE NOT NULL,
+    Password NVARCHAR(255) NOT NULL
+);
+GO
